@@ -1,0 +1,113 @@
+using System;
+using System.Threading;
+
+public class Magazyn
+{
+    public static void Main(string[] args)
+  {  
+  string[] towary = ["lalka", "pilka", "koc"];    
+  int[] ilosc = [10, 20, 2];
+  int[] ceny = [15, 2, 18];
+  int menu=0;
+  int tow;
+  int kosz = 0;
+  int ile = 0;
+  int dodtow;
+  int iltow = 0;
+  int koszyk = 0;
+  
+  do
+ 
+  {
+   Console.WriteLine($"Wybierz z menu operacje:");
+   Console.WriteLine($" 1-Wyswietl towary,\n 2-Kup produkt,\n 3-Dodaj do magazynu,\n 4-Wyjscie");
+   menu = int.Parse(Console.ReadLine());
+   
+  if(menu == 1)
+    {
+    for(int i=0; i<towary.Length;i++)
+      {
+      Console.WriteLine($"{i+1}.{towary[i]} sztuk:{ilosc[i]} ceny:{ceny[i]}PLN");
+      }
+     //Thread.Sleep(3000);
+     
+     }
+  else if (menu == 2)
+   
+   {
+      {
+      for(int i=0; i<towary.Length;i++)
+       {    
+        Console.WriteLine($"{i+1}.{towary[i]} cena: {ceny[i]} sztuk:{ilosc[i]}");
+       }
+      }
+      {
+        Console.WriteLine("Nacisnij numer towaru, ktory chesz kupic");
+        tow = int.Parse(Console.ReadLine());
+        tow = (tow -1);
+        Console.WriteLine($"Wybrales nr {(tow + 1)}");
+        Console.WriteLine("Podaj ile sztuk chcesz kupic.\n");
+        ile = int.Parse(Console.ReadLine());
+         
+        Console.WriteLine($"Chcesz kupic {ile} sztuk?");
+      }
+   
+        if(ilosc[tow] - ile>=0)
+        {
+         ilosc[tow] = ilosc[tow] - ile;
+         Console.WriteLine($"Zostalo {ilosc[tow]} asortymentu {towary[tow]}\n");
+         kosz = (ile) * ceny[tow];
+         koszyk = (koszyk + kosz);
+        
+         Console.WriteLine($"Wartosc twojego koszyka, to {koszyk}PLN.\n");     
+        }
+        else
+        {
+        Console.WriteLine("Zabraklo towaru.");
+        }
+        Console.Clear();
+       
+      }
+
+     else if (menu == 3)
+    
+    {
+      for(int i=0; i<towary.Length;i++)
+      {    
+      Console.WriteLine($"{i+1}.{towary[i]} cena: {ceny[i]}");
+      }
+    
+      {
+        Console.WriteLine("Nacisnij numer towaru, ktory chesz dodac\n");
+        dodtow = int.Parse(Console.ReadLine());
+        dodtow = (dodtow -1);   
+        Console.WriteLine("Wprowadz ile sztuk chcesz dodac do magazynu.\n");
+        iltow = int.Parse(Console.ReadLine());
+      }
+      {
+          ilosc[dodtow] = ilosc[dodtow] + iltow;
+      }
+      {
+          Console.WriteLine($"Masz teraz\n {ilosc[dodtow]} sztuk towaru  {towary[dodtow]}");
+      }
+      
+   }
+  else if (menu == 4)
+    {
+      Console.WriteLine("Dziekuje za korzystanie z naszych uslug");
+      Thread.Sleep(2000);
+      break;
+    }
+  }
+    
+     while (menu <=4) ;
+     while (true)
+     if (menu > 4)
+      {
+      Console.WriteLine("Bledna opcja.\nUruchom program powtornie.\n");
+      Thread.Sleep(2000);
+      break;
+      }
+   }
+  }
+
